@@ -13,6 +13,7 @@ class SnowflakeConnection:
     def __init__(self):
         self.session = None
         self.oauth_session_path = "/snowflake/session/token"
+        self.secrets_path = ".streamlit/secrets.toml"
 
     def get_active_session(self):
         """for Streamlit in Snowflake"""
@@ -73,11 +74,12 @@ class SnowflakeConnection:
     def get_session(self):
         """ローカル、SIS、SPCSいずれの実行環境でも1つのメソッドからセッションを取得"""
         try:
-            self.get_active_session()
-            if self.session is None:
+            if os.path.isfile(self.oauth_session_path):
                 self.get_session_in_spcs()
-            if self.session is None:
+            elif os.path.isfile(self.secrets_path):
                 self.get_session_in_local()
+            else:
+                self.get_active_session()
         except Exception:
             raise Exception("Snowflakeクライアントの取得に失敗しました")
         if self.session is None:
