@@ -1,0 +1,23 @@
+spec:
+  containers:
+    - name: dbt-docs-app
+      image: /workspace_db/workspace/dbt_docs_repository:dev
+      env:
+        SERVER_PORT: 8501
+        SNOWFLAKE_ROLE: FUNCTIONAL_PERSONAL_MY_WORKSPACE
+        SNOWFLAKE_WAREHOUSE: WH_FUNCTIONAL_PERSONAL_MY_WORKSPACE_STD_XSMALL
+      readinessProbe:
+        port: 8501
+      secrets:
+        - snowflakeSecret: WORKSPACE_DB.WORKSPACE.MY_PAT
+          secretKeyRef: PASSWORD
+          envVarName: SNOWFLAKE_PASSWORD
+        - snowflakeSecret: WORKSPACE_DB.WORKSPACE.MY_PAT
+          secretKeyRef: USERNAME
+          envVarName: SNOWFLAKE_USER
+  endpoints:
+    - name: dbt-docs-app
+      port: 8501
+      public: true
+  networkPolicyConfig:
+    allowInternetEgress: true

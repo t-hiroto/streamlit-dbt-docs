@@ -1,0 +1,16 @@
+definition_version: "2"
+entities:
+  dbt_docs:
+    type: streamlit
+    identifier:
+      name: dbt_docs
+    main_file: streamlit_app.py
+    pages_dir: pages
+    query_warehouse: WH_FUNCTIONAL_PERSONAL_MY_WORKSPACE_STD_XSMALL
+    stage: dbt_docs_stage
+    artifacts:
+      - streamlit_app.py
+      - common
+      - environment.yml
+      - .streamlit/config.toml
+      - statics/.gitkeep

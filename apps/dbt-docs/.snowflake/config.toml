@@ -1,0 +1,15 @@
+default_connection_name = "dev"
+[connections]
+[connections.dev]
+authenticator = "SNOWFLAKE_JWT"
+role = ""
+database = "DEV_DATAHUB"
+schema = "APPLICATION"
+warehouse = ""
+
+[connections.prod]
+authenticator = "SNOWFLAKE_JWT"
+role = ""
+database = "PROD_DATAHUB"
+schema = "APPLICATION"
+warehouse = ""

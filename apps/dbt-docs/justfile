@@ -1,0 +1,5 @@
+# Pythonコードのフォーマット
+format:
+    uv run ruff clean
+    uv run ruff format streamlit_app.py common
+    uv run ruff check --fix streamlit_app.py common
