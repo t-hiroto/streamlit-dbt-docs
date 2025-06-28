@@ -1,4 +1,4 @@
-# training-snowpark-container-service
+# streamlit-dbt-docs
 
 ## セットアップ
 
