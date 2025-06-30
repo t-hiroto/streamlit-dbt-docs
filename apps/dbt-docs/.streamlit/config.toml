@@ -4,3 +4,7 @@ primaryColor="#004a55"
 backgroundColor="#F0F0F0"
 textColor="#222"
 font="sans serif"
+
+[snowflake]
+[snowflake.sleep]
+streamlitSleepTimeoutMinutes = 5
